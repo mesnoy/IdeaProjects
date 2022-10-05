@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/src/main/java/Student.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/main/java/StudentRecordService.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/test/java/StudentRecordServiceTest.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/Novichki_inf.txt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/Human.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/Parent.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/Student.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/StudentRecord.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/StudentRecordService.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/test/java/StudentRecordServiceTest.java" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

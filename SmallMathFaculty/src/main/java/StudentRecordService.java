@@ -7,7 +7,7 @@ import java.util.*;
 
 public class StudentRecordService {
 
-    // Метод делит поток ввода на строки и возвращает их в виде массива
+    // РњРµС‚РѕРґ РґРµР»РёС‚ РїРѕС‚РѕРє РІРІРѕРґР° РЅР° СЃС‚СЂРѕРєРё Рё РІРѕР·РІСЂР°С‰Р°РµС‚ РёС… РІ РІРёРґРµ РјР°СЃСЃРёРІР°
     public static String[] splitByLines(Reader in) throws IOException {
         List<String> list;
         try (BufferedReader stream = new BufferedReader(in)){
@@ -22,7 +22,7 @@ public class StudentRecordService {
         return list.toArray(String[]::new);
     }
 
-    // Метод делит строку по разделителю, обрабатывает получившиеся поля, создает запись по ним и возвращает ее
+    // РњРµС‚РѕРґ РґРµР»РёС‚ СЃС‚СЂРѕРєСѓ РїРѕ СЂР°Р·РґРµР»РёС‚РµР»СЋ, РѕР±СЂР°Р±Р°С‚С‹РІР°РµС‚ РїРѕР»СѓС‡РёРІС€РёРµСЃСЏ РїРѕР»СЏ, СЃРѕР·РґР°РµС‚ Р·Р°РїРёСЃСЊ РїРѕ РЅРёРј Рё РІРѕР·РІСЂР°С‰Р°РµС‚ РµРµ
     public static StudentRecord stringToStudentRecord(String str) {
         String[] fields = str.split(";");
         for (int i = 0; i < fields.length; i++) {
@@ -36,7 +36,7 @@ public class StudentRecordService {
                 studentWorkToBoolean(fields[19]), consentToBoolean(fields[20]));
     }
 
-    // Метод создает список записей из потока ввода с помощью предыдущих методов
+    // РњРµС‚РѕРґ СЃРѕР·РґР°РµС‚ СЃРїРёСЃРѕРє Р·Р°РїРёСЃРµР№ РёР· РїРѕС‚РѕРєР° РІРІРѕРґР° СЃ РїРѕРјРѕС‰СЊСЋ РїСЂРµРґС‹РґСѓС‰РёС… РјРµС‚РѕРґРѕРІ
     public static List<StudentRecord> createStudentRecords(Reader in) throws IOException {
         List<StudentRecord> result = new ArrayList<>();
         for (String string : splitByLines(in)) {
@@ -45,7 +45,7 @@ public class StudentRecordService {
         return result;
     }
 
-    // Вспомогательные методы перевода String в нужный тип, методы перевода в тип LocalDate зависят от формата даты потока ввода
+    // Р’СЃРїРѕРјРѕРіР°С‚РµР»СЊРЅС‹Рµ РјРµС‚РѕРґС‹ РїРµСЂРµРІРѕРґР° String РІ РЅСѓР¶РЅС‹Р№ С‚РёРї, РјРµС‚РѕРґС‹ РїРµСЂРµРІРѕРґР° РІ С‚РёРї LocalDate Р·Р°РІРёСЃСЏС‚ РѕС‚ С„РѕСЂРјР°С‚Р° РґР°С‚С‹ РїРѕС‚РѕРєР° РІРІРѕРґР°
     private static LocalDate stringToLocalDate(String string) {
         String[] temp = string.split("\\.");
         return LocalDate.of(Integer.parseInt(temp[2]), Integer.parseInt(temp[1]), Integer.parseInt(temp[0]));
@@ -60,14 +60,14 @@ public class StudentRecordService {
     }
 
     private static boolean studentWorkToBoolean(String string) {
-        return string.equals("Да");
+        return string.equals("Р”Р°");
     }
 
     private static boolean consentToBoolean(String string) {
-        return string.equals("Согласен");
+        return string.equals("РЎРѕРіР»Р°СЃРµРЅ");
     }
 
-    // Методы фильтров студентов по группе, году рождения, школе и классу
+    // РњРµС‚РѕРґС‹ С„РёР»СЊС‚СЂРѕРІ СЃС‚СѓРґРµРЅС‚РѕРІ РїРѕ РіСЂСѓРїРїРµ, РіРѕРґСѓ СЂРѕР¶РґРµРЅРёСЏ, С€РєРѕР»Рµ Рё РєР»Р°СЃСЃСѓ
     public static List<StudentRecord> studentsByGroup(List<StudentRecord> list, String group) {
         List<StudentRecord> result = new ArrayList<>();
         for  (StudentRecord studentRecord : list) {

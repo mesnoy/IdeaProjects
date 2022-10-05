@@ -91,12 +91,12 @@ public class Human {
 
     @Override
     public String toString() {
-        return "Фамилия: '" + Surname + '\'' +
-                ", Имя: '" + Name + '\'' +
-                ", Отчество: '" + Patronymic + '\'' +
-                ", День рождения: " + Birthday +
-                ", Адрес: '" + Address + '\'' +
-                ", Почта: '" + Email + '\'' +
-                ", Телефон: '" + PhoneNumber + '\'';
+        return "Р¤Р°РјРёР»РёСЏ: '" + Surname + '\'' +
+                ", РРјСЏ: '" + Name + '\'' +
+                ", РћС‚С‡РµСЃС‚РІРѕ: '" + Patronymic + '\'' +
+                ", Р”РµРЅСЊ СЂРѕР¶РґРµРЅРёСЏ: " + Birthday +
+                ", РђРґСЂРµСЃ: '" + Address + '\'' +
+                ", РџРѕС‡С‚Р°: '" + Email + '\'' +
+                ", РўРµР»РµС„РѕРЅ: '" + PhoneNumber + '\'';
     }
 }

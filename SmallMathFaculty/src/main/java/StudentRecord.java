@@ -99,10 +99,10 @@ public class StudentRecord {
         return "StudentRecord{" +
                 student + "\n" +
                 parent + "\n" +
-                "Отметка времени: " + timestamp +
-                ", Примечание: '" + note + '\'' +
-                ", Будет ли заниматься: " + willTheStudentWork +
-                ", Согласие на обработку данных: " + consentToProcessing +
+                "РћС‚РјРµС‚РєР° РІСЂРµРјРµРЅРё: " + timestamp +
+                ", РџСЂРёРјРµС‡Р°РЅРёРµ: '" + note + '\'' +
+                ", Р‘СѓРґРµС‚ Р»Рё Р·Р°РЅРёРјР°С‚СЊСЃСЏ: " + willTheStudentWork +
+                ", РЎРѕРіР»Р°СЃРёРµ РЅР° РѕР±СЂР°Р±РѕС‚РєСѓ РґР°РЅРЅС‹С…: " + consentToProcessing +
                 '}';
     }
 }

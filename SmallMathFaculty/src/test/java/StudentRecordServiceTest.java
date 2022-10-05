@@ -18,24 +18,24 @@ public class StudentRecordServiceTest {
         Reader reader = new FileReader("Novichki_inf.txt");
         String[] strings = StudentRecordService.splitByLines(reader);
         System.out.println(StudentRecordService.stringToStudentRecord(strings[5]));
-        assertEquals("9.17.2021 11:06:08;воскресенье, 10:00;web-программирование, Санчак ЮС;Гиль ;Марина;Евгеньевна;" +
-                "19.08.2008;644001, г. Омск, Лермонтова, 128, кв. 5;\"АНОО \"\"Школа \"\"Видергебурт\"\"\";7;;;Кунавина;" +
-                "Альбина;Викторовна;08.09.1978;644001, г. Омск, Лермонтова, 128, кв. 5;al0809@yandex.ru;89658758675;Нет;Согласен",
+        assertEquals("9.17.2021 11:06:08;РІРѕСЃРєСЂРµСЃРµРЅСЊРµ, 10:00;web-РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ, РЎР°РЅС‡Р°Рє Р®РЎ;Р“РёР»СЊ ;РњР°СЂРёРЅР°;Р•РІРіРµРЅСЊРµРІРЅР°;" +
+                "19.08.2008;644001, Рі. РћРјСЃРє, Р›РµСЂРјРѕРЅС‚РѕРІР°, 128, РєРІ. 5;\"РђРќРћРћ \"\"РЁРєРѕР»Р° \"\"Р’РёРґРµСЂРіРµР±СѓСЂС‚\"\"\";7;;;РљСѓРЅР°РІРёРЅР°;" +
+                "РђР»СЊР±РёРЅР°;Р’РёРєС‚РѕСЂРѕРІРЅР°;08.09.1978;644001, Рі. РћРјСЃРє, Р›РµСЂРјРѕРЅС‚РѕРІР°, 128, РєРІ. 5;al0809@yandex.ru;89658758675;РќРµС‚;РЎРѕРіР»Р°СЃРµРЅ",
                 strings[0]);
-        assertEquals("9.17.2021 12:43:34;воскресенье, 10:00;web-программирование, Санчак ЮС;Золкина;Ирина;Михайловна;" +
-                "16.01.2008;160024 Омск , ул. Ленина 50-10;Гимназия 115;7;ira16.01.08@mail.ru;89131422150;Поддубная;Наталия;" +
-                "Викторовна ;11.10.1977;160024 Омск , ул. Ленина 50-10;nnn11.10.77@mail.ru;89136409965;Да;Согласен", strings[5]);
+        assertEquals("9.17.2021 12:43:34;РІРѕСЃРєСЂРµСЃРµРЅСЊРµ, 10:00;web-РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ, РЎР°РЅС‡Р°Рє Р®РЎ;Р—РѕР»РєРёРЅР°;РСЂРёРЅР°;РњРёС…Р°Р№Р»РѕРІРЅР°;" +
+                "16.01.2008;160024 РћРјСЃРє , СѓР». Р›РµРЅРёРЅР° 50-10;Р“РёРјРЅР°Р·РёСЏ 115;7;ira16.01.08@mail.ru;89131422150;РџРѕРґРґСѓР±РЅР°СЏ;РќР°С‚Р°Р»РёСЏ;" +
+                "Р’РёРєС‚РѕСЂРѕРІРЅР° ;11.10.1977;160024 РћРјСЃРє , СѓР». Р›РµРЅРёРЅР° 50-10;nnn11.10.77@mail.ru;89136409965;Р”Р°;РЎРѕРіР»Р°СЃРµРЅ", strings[5]);
     }
 
     @Test
     public void stringToStudentTest() {
-        StudentRecord actual = StudentRecordService.stringToStudentRecord("5.5.2005 13:59:59; группа А ; web; а ;б;в;20.02.2002;" +
-                "адрес;  ШКОЛА №96 ;7; почта ; номер ; аа ; бб;вв;18.09.1978; адрес ;почта;номер;Да;Согласен");
-        StudentRecord expected = new StudentRecord("а", "б", "в", LocalDate.of(2002, 2, 20),
-                "адрес", "почта", "номер", "96", 7,
-                "аа", "бб", "вв", LocalDate.of(1978, 9, 18), "адрес",
-                "почта", "номер",
-                LocalDateTime.of(2005, 5, 5, 13, 59, 59), "web","группа А",
+        StudentRecord actual = StudentRecordService.stringToStudentRecord("5.5.2005 13:59:59; РіСЂСѓРїРїР° Рђ ; web; Р° ;Р±;РІ;20.02.2002;" +
+                "Р°РґСЂРµСЃ;  РЁРљРћР›Рђ в„–96 ;7; РїРѕС‡С‚Р° ; РЅРѕРјРµСЂ ; Р°Р° ; Р±Р±;РІРІ;18.09.1978; Р°РґСЂРµСЃ ;РїРѕС‡С‚Р°;РЅРѕРјРµСЂ;Р”Р°;РЎРѕРіР»Р°СЃРµРЅ");
+        StudentRecord expected = new StudentRecord("Р°", "Р±", "РІ", LocalDate.of(2002, 2, 20),
+                "Р°РґСЂРµСЃ", "РїРѕС‡С‚Р°", "РЅРѕРјРµСЂ", "96", 7,
+                "Р°Р°", "Р±Р±", "РІРІ", LocalDate.of(1978, 9, 18), "Р°РґСЂРµСЃ",
+                "РїРѕС‡С‚Р°", "РЅРѕРјРµСЂ",
+                LocalDateTime.of(2005, 5, 5, 13, 59, 59), "web","РіСЂСѓРїРїР° Рђ",
                 true, true);
         assertEquals(expected, actual);
     }
@@ -45,7 +45,7 @@ public class StudentRecordServiceTest {
         Reader reader = new FileReader("Novichki_inf.txt");
         List<StudentRecord> studentRecords = StudentRecordService.createStudentRecords(reader);
         List<StudentRecord> actual = StudentRecordService.studentsByGroup(studentRecords,
-                "воскресенье, 10:00");
+                "РІРѕСЃРєСЂРµСЃРµРЅСЊРµ, 10:00");
         List<StudentRecord> expected = new ArrayList<>();
         expected.add(studentRecords.get(0));
         expected.add(studentRecords.get(1));

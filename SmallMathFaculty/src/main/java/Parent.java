@@ -7,6 +7,6 @@ public class Parent extends Human {
 
     @Override
     public String toString() {
-        return "Родитель{" + super.toString() + '}';
+        return "Р РѕРґРёС‚РµР»СЊ{" + super.toString() + '}';
     }
 }
