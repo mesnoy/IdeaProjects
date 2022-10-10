@@ -1,16 +1,22 @@
 package com.company;
 
+import java.io.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Main {
 
-    public static void main(String[] args) {
-        String str = "—Œÿ π28 „. ŒÏÒÍ‡ Ò ”»Œœ\n";
-        for ()
-        System.out.println();
-
+    public static void main(String[] args) throws IOException {
+        Reader reader = new FileReader(".\\src\\main\\resources\\4_klass_Yuschenko_sb_16_00_Otvety");
+        System.out.println(reader.getName());
+        /*String str = "sosh #28 g. Omska s YIOP\n";
+        Pattern pattern = Pattern.compile("\\s*\\w*(\\d*)");
+        Matcher matcher = pattern.matcher(str);
+        while (matcher.find())
+            System.out.println(matcher.group());
 
         /*
         LocalDate date1 = LocalDate.of(2008, 3, 29);

@@ -1,21 +1,22 @@
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.annotations.Test;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
+import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class StudentRecordServiceTest {
-    @Test
+    /*@Test
     public void splitByStudentsTest() throws IOException {
-        Reader reader = new FileReader("Novichki_inf.txt");
+        Reader reader = new FileReader(".\\src\\main\\resources\\Novichki_inf.txt");
         String[] strings = StudentRecordService.splitByLines(reader);
         System.out.println(StudentRecordService.stringToStudentRecord(strings[5]));
         assertEquals("9.17.2021 11:06:08;воскресенье, 10:00;web-программирование, Санчак ЮС;Гиль ;Марина;Евгеньевна;" +
@@ -38,12 +39,32 @@ public class StudentRecordServiceTest {
                 LocalDateTime.of(2005, 5, 5, 13, 59, 59), "web","группа А",
                 true, true);
         assertEquals(expected, actual);
+    }*/
+
+    @Test public void test() throws IOException {
+        //Reader reader = new FileReader(".\\src\\main\\resources\\Novichki_inf.xlsx");
+        List<StudentRecord> result = new ArrayList<>();
+        FileInputStream fileInputStream = new FileInputStream(".\\src\\main\\resources\\4_klass_Yuschenko_sb_16_00_Otvety.xlsx");
+        String str = ".\\src\\main\\resources\\4_klass_Yuschenko_sb_16_00_Otvety.xlsx".substring(21);
+        if (str.matches("\\d{1,2}_klass\\S*")){
+            String[] strings = str.split("_");
+            for (String string : strings) {
+                System.out.println(string);
+            }
+        }
+        //System.out.println(str.matches("\d{1,2}"));
+
+
+        XSSFWorkbook sheets = new XSSFWorkbook(fileInputStream);
+        XSSFSheet sheet = sheets.getSheet("Ответы на форму (1)");
+        assertTrue(true);
     }
 
     @Test
     public void studentsByGroupTest() throws IOException {
-        Reader reader = new FileReader("Novichki_inf.txt");
-        List<StudentRecord> studentRecords = StudentRecordService.createStudentRecords(reader);
+        //Reader reader = new FileReader(".\\src\\main\\resources\\Novichki_inf.txt");
+        List<StudentRecord> studentRecords =
+                StudentRecordService.createStudentRecordList(".\\src\\main\\resources\\Novichki_inf.xlsx", "Ответы на форму (1)");
         List<StudentRecord> actual = StudentRecordService.studentsByGroup(studentRecords,
                 "воскресенье, 10:00");
         List<StudentRecord> expected = new ArrayList<>();
@@ -64,12 +85,11 @@ public class StudentRecordServiceTest {
 
     @Test
     public void studentsByYearOfBirthTest() throws IOException {
-        Reader reader = new FileReader("Novichki_inf.txt");
-        List<StudentRecord> studentRecords = StudentRecordService.createStudentRecords(reader);
-        List<StudentRecord> actual = StudentRecordService.studentsByYearOfBirth(studentRecords,
-                2006);
+        List<StudentRecord> studentRecords = StudentRecordService.createStudentRecordList(".\\src\\main\\resources\\4_klass_Yuschenko_sb_16_00_Otvety.xlsx",
+                "Ответы на форму (1)");
+        List<StudentRecord> actual = StudentRecordService.studentsByYearOfBirth(studentRecords, 2012);
         List<StudentRecord> expected = new ArrayList<>();
-        expected.add(studentRecords.get(29));
+        expected.add(studentRecords.get(0));
         for (StudentRecord studentRecord : actual) {
             System.out.println(studentRecord.getStudent().toString());
         }
@@ -78,23 +98,24 @@ public class StudentRecordServiceTest {
 
     @Test
     public void studentsBySchoolTest() throws IOException {
-        Reader reader = new FileReader("Novichki_inf.txt");
-        List<StudentRecord> studentRecords = StudentRecordService.createStudentRecords(reader);
+        Reader reader = new FileReader(".\\src\\main\\resources\\4_klass_Yuschenko_sb_16_00_Otvety.xlsx");
+        List<StudentRecord> studentRecords = StudentRecordService.createStudentRecordList(".\\src\\main\\resources\\4_klass_Yuschenko_sb_16_00_Otvety.xlsx",
+                "Ответы на форму (1)");
         List<StudentRecord> actual = StudentRecordService.studentsBySchool(studentRecords,
-                "117");
+                "146");
         List<StudentRecord> expected = new ArrayList<>();
-        expected.add(studentRecords.get(14));
-        expected.add(studentRecords.get(22));
-        expected.add(studentRecords.get(32));
+        expected.add(studentRecords.get(4));
+        //expected.add(studentRecords.get(8));
+        expected.add(studentRecords.get(16));
         for (StudentRecord studentRecord : actual) {
             System.out.println(studentRecord.getStudent().toString());
         }
         assertEquals(expected, actual);
     }
 
-    @Test
+    /*@Test
     public void studentsByGradeTest() throws IOException {
-        Reader reader = new FileReader("Novichki_inf.txt");
+        Reader reader = new FileReader(".\\src\\main\\resources\\Novichki_inf.txt");
         List<StudentRecord> studentRecords = StudentRecordService.createStudentRecords(reader);
         List<StudentRecord> actual = StudentRecordService.studentsByGrade(studentRecords,
                 6);
@@ -104,8 +125,11 @@ public class StudentRecordServiceTest {
             System.out.println(studentRecord.getStudent().toString());
         }
         assertEquals(expected, actual);
-    }
-
-
+    }*/
 
 }
+/* дополнительный ноль в эксель таблицах после числовых значений (например: 46 -> после
+*
+*
+*
+* */
